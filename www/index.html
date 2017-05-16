@@ -41,9 +41,8 @@ button[disabled] {
 <script type="text/javascript">
 $(function () {
   $("#theIframe").load(function () {
-    var iframe = document.getElementById("theIframe").contentWindow;
-    $(iframe).scroll(function () { 
-      if ($(iframe).scrollTop() + $(iframe).height() == $(iframe.document).innerHeight()) {
+    $(this.contentWindow).scroll(function () { 
+      if ($(this).scrollTop() + $(this).height() == $(this.document).innerHeight()) {
 	$("#ack").prop("disabled", false);
       }
     });

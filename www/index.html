@@ -41,7 +41,9 @@ button[disabled] {
 <script type="text/javascript">
 $(function () {
   $("#theIframe").load(function () {
+    // 'this' is the <iframe>
     $(this.contentWindow).scroll(function () { 
+      // 'this' is now the <iframe>'s contentWindow
       if ($(this).scrollTop() + $(this).height() == $(this.document).innerHeight()) {
 	$("#ack").prop("disabled", false);
       }

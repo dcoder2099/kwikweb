@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<meta charset=utf-8 />
+<title>Scroll</title>
+<style type="text/css">
+header {
+  width: 100%;
+  background: teal;
+}
+
+iframe {
+  display: block;
+  margin: 2em auto;
+}
+button {
+  margin: 2em auto;
+  width: 20%;
+  height: 3em;
+  background: blue;
+  color: white;
+}
+button:disabled,
+button[disabled] {
+  background: pink;
+}
+
+</style>
+</head>
+<body>
+  <header><h1>Monitor the Scroll</h1></header>
+
+  <iframe id="theIframe" src="lipsum.html" width="80%" height="200">
+    <p>Your browser does not support iframes.</p>
+  </iframe>
+  <p style="text-align:center;">
+    <button id="ack" disabled>ACKNOWLEDGE</button>
+  </p>
+
+<script type="text/javascript">
+$(function () {
+  $("#theIframe").load(function () {
+    var iframe = document.getElementById("theIframe").contentWindow;
+    $(iframe).scroll(function () { 
+      if ($(iframe).scrollTop() + $(iframe).height() == $(iframe.document).innerHeight()) {
+	$("#ack").prop("disabled", false);
+      }
+    });
+  });
+  $("#ack").click(function() {
+    alert('clicked!');
+  });
+});
+</script>
+
+</body>
+</html>
